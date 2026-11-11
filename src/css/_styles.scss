@@ -1,0 +1,166 @@
+// breakpoints
+$bp-sm: 820px;
+
+// light theme
+:root {
+  color-scheme: light;
+
+  // core
+  --bg: #eaf2ff;
+  --bg2: #a8ccff;
+  --accent: #1f5bff;
+  --accent-hover: #3d8bff;
+  --heading: #101f5b;
+  --panel: #eef3ff;
+  --tb: #ffffff;
+  --pop: #ffb020;
+  --text: #1e1e1e;
+  --surface: #ffffff;
+
+  // buttons
+  --btn-default: linear-gradient(to bottom, #4a8fff, #1f5bff);
+  --btn-hover: linear-gradient(to bottom, #274caf, #3381ff);
+  --btn-muted: linear-gradient(to bottom, #f9f9f9, #d3d3d3);
+  --btn-muted-hover: linear-gradient(to bottom, #acacac, #f9f9f9);
+  --btn-muted-border: #cacaca;
+  --btn-muted-text: #1e1e1e;
+
+  // nav
+  --nav-height: 22px;
+  --nav-bar: linear-gradient(to top, var(--accent), #99c2ff);
+  --nav-text: var(--tb);
+  --nav-hover: linear-gradient(to top, #1a5dc1, #2d5ee3);
+  --nav-hover-border: #274caf;
+  --nav-active: linear-gradient(to top, #5599ff, #0044ff);
+  --nav-active-border: var(--accent);
+
+  // header
+  --header-height: 27px;
+  --header-bg: #385cbd;
+  --header-text: #ffffff;
+  --header-block: rgb(255 255 255 / 39%);
+
+  // tags
+  --tag-bg: #e6eeff;
+  --tag-fg: var(--accent);
+  --tag-border: var(--accent);
+
+  // footer
+  --footer-bg: var(--bg);
+  --footer-section: color-mix(in srgb, var(--bg2) 35%, transparent);
+  --footer-text: var(--text);
+
+  // status widget
+  --status-bubble: linear-gradient(to bottom, #006aff 12%, #2eb6ff);
+  --status-name: linear-gradient(to bottom, #1f93ff 12%, #7ed2ff);
+
+  // content page
+  --paper-bg: #fafafa;
+  --paper: #ffffff;
+
+  // fonts
+  --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  // font sizes
+  --fs-h1: 2rem;
+  --fs-h2: 1.5rem;
+  --fs-h3: 1.125rem;
+  --fs-caption: 0.875rem;
+  --fs-body: 0.75rem;
+  --fs-subsection: 0.75rem;
+  --fs-tag: 0.75rem;
+  --fs-nav: 0.625rem;
+  --fs-footer: 0.5625rem;
+
+  // letter spacing
+  --ls-h1: -0.078em;
+  --ls-h2: -0.083em;
+  --ls-h3: -0.056em;
+  --ls-caption: -0.107em;
+  --ls-body: -0.042em;
+  --ls-subsection: -0.125em;
+  --ls-tag: -0.083em;
+  --ls-nav: 0;
+  --ls-footer: -0.056em;
+
+  // line height (guess)
+  --lh-heading: 1.1;
+  --lh-body: 1.6;
+
+  // spacing
+  --space-2xs: 2px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 20px;
+  --space-xl: 29px;
+
+  // radius + borders
+  --radius-sm: 2px;
+  --radius-page: 14px;
+  --radius-pill: 999px;
+  --border-w: 2px;
+  --border-w-thin: 1px;
+  --titlebar-height: 21px;
+
+  // layout
+  --content-width: 877px;
+  --site-max-width: 1144px; // guess
+}
+
+// dark palette, shared by OS preference and [data-theme="dark"]
+@mixin dark-palette {
+  color-scheme: dark;
+
+  // core
+  --bg: #07142f;
+  --bg2: #0b1f4d;
+  --accent: #3d8bff;
+  --accent-hover: #a8ccff;
+  --heading: #eaf2ff;
+  --panel: #0b1f4d;
+  --tb: #07142f;
+  --pop: #ffb020;
+  --text: #dce6f7;
+  --surface: #07142f;
+
+  // buttons
+  --btn-default: linear-gradient(to bottom, #a8ccff, #3d8bff);
+  --btn-hover: linear-gradient(to bottom, #6fa6ff, #b9d6ff);
+  --btn-muted: linear-gradient(to bottom, #5e5e5e, #080808);
+  --btn-muted-hover: linear-gradient(to bottom, #080808, #5e5e5e);
+  --btn-muted-border: #262626;
+  --btn-muted-text: #ffffff;
+
+  // container + shadow
+  --container: linear-gradient(
+    to bottom left,
+    rgb(61 139 255 / 35%),
+    rgb(11 31 77 / 60%)
+  ); // direction guess
+  --shadow-text: rgb(0 0 0 / 40%);
+
+  // nav states (guess, not designed yet)
+  --nav-hover: linear-gradient(to top, #6fa6ff, #b9d6ff);
+  --nav-hover-border: var(--accent-hover);
+  --nav-active: linear-gradient(to top, #a8ccff, #3d8bff);
+
+  // tag (guess)
+  --tag-bg: #112a54;
+
+  // content page
+  --paper-bg: #020202;
+  --paper: #0d0d0d;
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root:not([data-theme="light"]) {
+//     @include dark-palette;
+//   }
+// }
+
+// :root[data-theme="dark"] {
+//   @include dark-palette;
+// }
