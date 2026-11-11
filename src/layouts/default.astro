@@ -1,7 +1,7 @@
 ---
 // src/layouts/default.astro
 import "../css/global.scss";
-import Navbar from "../components/navbar.astro";
+import Navbar from "../components/topbar.astro";
 import Footer from "../components/footer.astro";
 import Preload from "../components/preload.astro";
 
@@ -48,13 +48,6 @@ const footerTitle = title;
   </head>
 
   <body>
-    <img
-      fetchpriority="high"
-      class="field"
-      alt="A distant field on sirkorgo.com"
-      src="/img/bg-field.webp"
-    />
-    <div class="bg-layer"></div>
     <main>
       <section class="the-container-that-centers-the-main-content">
         <section

@@ -1,4 +1,8 @@
 @use "styles" as *;
+@use "components/post" as *;
+@use "components/topbar" as *;
+@use "components/footer" as *;
+@use "components/buttons" as *;
 // fonts are now links in the head of layout files
 // when updating fonts, make sure to update each layout file
 
@@ -31,8 +35,16 @@ body {
 }
 
 main {
-  padding-top: 0;
+  padding-top: 20px;
   z-index: 2;
+}
+
+html,
+body,
+main,
+.the-container-that-centers-the-main-content,
+.nested-section-that-makes-the-content-not-stretch-the-entire-page-why-is-css-so-annoying {
+  overflow-x: clip;
 }
 
 .the-container-that-centers-the-main-content {
@@ -44,7 +56,7 @@ main {
 }
 
 .nested-section-that-makes-the-content-not-stretch-the-entire-page-why-is-css-so-annoying {
-  max-width: 1200px;
+  max-width: 900px;
 }
 
 .content {
@@ -176,44 +188,44 @@ body.is-index .bg-layer::before {
 
 /* typography */
 h1 {
-  font-family: "Cabin Condensed";
-  font-weight: 800;
-  font-size: 30px;
-  color: var(--font);
+  font-family: "Manrope";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -2.5px;
 }
 
 h2 {
-  font-family: "Cabin Condensed";
-  font-weight: 800;
-  font-size: 25px;
-  color: var(--font);
-  margin-bottom: 3px;
+  font-family: "Manrope";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -2px;
 }
 
 h3 {
-  font-family: "Cabin Condensed";
-  font-weight: 600;
+  font-family: "Manrope";
   font-size: 20px;
-  color: var(--font);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -1px;
 }
 
 p,
 li {
-  font-family: "Cabin";
-  font-weight: normal;
-  font-size: 17px;
-  color: var(--font);
-  margin: 0 0 5px;
-  line-height: 20px;
+  color: var(--text);
+
+  /* Paragraph */
+  font-family: "JetBrains Mono";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.5px;
 }
 
 a {
-  font-family: "Cabin";
-  font-weight: 800;
-  font-style: normal;
-  line-height: normal;
+  color: var(--accent);
   text-decoration: none;
-  color: var(--link);
 }
 
 small {
@@ -254,33 +266,11 @@ code {
   padding-bottom: 5px;
   gap: 5px;
   margin-bottom: 10px;
-  border-bottom: solid 1px var(--font);
+  border-bottom: solid 1px var(--text);
 }
 
 .mobileSupportBtn {
   display: none;
-}
-
-/* buttons */
-.generic-btn,
-.dropdown {
-  width: fit-content;
-  height: fit-content;
-  padding: 5px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 4px;
-  border: var(--btn-border);
-  background: var(--btn-bg);
-  font-family: "Cabin";
-  color: var(--font);
-}
-
-.generic-btn:hover {
-  border: 1px solid #1b6fff;
-  background: linear-gradient(180deg, #0a53ff 0%, #81a7ff 100%);
-  color: white;
 }
 
 /* index.html mood bubble stuff */
@@ -345,12 +335,6 @@ code {
     justify-content: center;
     align-items: center;
     margin-top: 70px;
-  }
-}
-
-@media (max-width: 1200px) {
-  main {
-    margin: 0px 5%;
   }
 }
 
@@ -447,22 +431,4 @@ code {
       "button"
       "marquee";
   }
-}
-
-footer {
-  margin-top: 45px;
-  margin-bottom: 20px;
-  text-align: center;
-  align-items: center;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  background: var(--container-bg);
-  width: 100%;
-  height: fit-content;
-  padding: 10px;
-  border-radius: 10px;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
 }

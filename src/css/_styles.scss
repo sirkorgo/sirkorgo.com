@@ -46,8 +46,7 @@ $bp-sm: 820px;
   --tag-border: var(--accent);
 
   // footer
-  --footer-bg: var(--bg);
-  --footer-section: color-mix(in srgb, var(--bg2) 35%, transparent);
+  --footer-bg: color-mix(in srgb, var(--bg2) 35%, transparent);
   --footer-text: var(--text);
 
   // status widget

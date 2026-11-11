@@ -1,7 +1,7 @@
 ---
 // src/layouts/content/art.astro
 import "../../css/global.scss";
-import Navbar from "../../components/navbar.astro";
+import Navbar from "../../components/topbar.astro";
 import Footer from "../../components/footer.astro";
 import Comments from "../../components/comments.astro";
 import Preload from "../../components/preload.astro";
@@ -95,20 +95,20 @@ const next = allArt[nextIndex];
 
     <div class="page" style="min-height: fit-content;">
       <section class="pageHeader">
-        <a href="/portfolio"><button class="generic-btn">← Go Back</button></a>
+        <a href="/portfolio"><button class="button">← Go Back</button></a>
         <p><b>{title}</b></p>
         <span style="display: flex; gap: 0;">
           <a href={next ? `/art/${next.id}` : "#"} style="margin-left: 5px;">
             <button
               style="border-radius: 4px 0px 0px 4px !important; border-right: none;"
-              class="generic-btn">
+              class="button">
               ←
             </button>
           </a>
           <a href={prev ? `/art/${prev.id}` : "#"}>
             <button
               style="border-radius: 0px 4px 4px 0px !important; border-left: none;"
-              class="generic-btn">
+              class="button">
               →
             </button>
           </a>

@@ -34,7 +34,7 @@ const ArtPreview = createClass({
       h(
         "section",
         { className: "pageHeader" },
-        h("button", { className: "generic-btn" }, "← Go Back"),
+        h("button", { className: "button" }, "← Go Back"),
         h("p", {}, h("b", {}, title)),
         h(
           "span",
@@ -42,7 +42,7 @@ const ArtPreview = createClass({
           h(
             "button",
             {
-              className: "generic-btn",
+              className: "button",
               style: { borderRadius: "4px 0px 0px 4px !important", borderRight: "none" },
             },
             "←",
@@ -50,7 +50,7 @@ const ArtPreview = createClass({
           h(
             "button",
             {
-              className: "generic-btn",
+              className: "button",
               style: { borderRadius: "0px 4px 4px 0px !important", borderLeft: "none" },
             },
             "→",
@@ -110,7 +110,7 @@ const BlogPreview = createClass({
       h(
         "section",
         { className: "pageHeader" },
-        h("button", { className: "generic-btn" }, "← Go Back"),
+        h("button", { className: "button" }, "← Go Back"),
         h("p", {}, h("b", {}, `${formattedDate} • ${title}`)),
       ),
       h("hr", {}),
@@ -147,7 +147,7 @@ const ComicPreview = createClass({
         h(
           "span",
           { className: "comicHeader" },
-          h("button", { className: "generic-btn" }, "← Go Back"),
+          h("button", { className: "button" }, "← Go Back"),
           h("p", {}, h("b", {}, `${series} • Chapter ${chapter}`)),
           h("select", { className: "dropdown" }, h("option", { value: "#" }, `Chapter ${chapter}`)),
         ),

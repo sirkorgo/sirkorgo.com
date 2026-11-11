@@ -1,6 +1,6 @@
 ---
 import "../../css/global.scss";
-import Navbar from "../../components/navbar.astro";
+import Navbar from "../../components/topbar.astro";
 import Footer from "../../components/footer.astro";
 import Comments from "../../components/comments.astro";
 import { getCollection } from "astro:content";
@@ -61,7 +61,7 @@ const footerTitle = title;
     <div class="pageContainer">
       <main class="page">
         <span class="comicHeader">
-          <a href="/comics"><button class="generic-btn">← Go Back</button></a>
+          <a href="/comics"><button class="button">← Go Back</button></a>
           <p><b>{series} • Chapter {chapter}</b></p>
 
           <select onchange="location = this.value" class="dropdown">

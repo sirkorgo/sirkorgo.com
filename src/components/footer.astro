@@ -4,38 +4,38 @@ interface Props {
 }
 
 const { title = "an Unknown Page" } = Astro.props;
+const bullet = `<svg width="10" height="10" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M6 1.98306L5.41777 1.01602L3.58242 2.03261V0H2.41799V2.03296L0.582225 1.01637L0 1.98353L1.83531 2.99988L0.00048872 4.01613L0.582714 4.98318L2.41799 3.96659V6H3.58242V3.96729L5.41729 4.98364L5.99951 4.01648L4.16397 2.99988L6 1.98306Z"
+          fill="black">
+        </path>
+      </svg>`;
 ---
 
 <footer>
-  <span style="display: flex; justify-content: center;">
-    <a href="https://ko-fi.com/sirkorgo">
-      <img width="185" height="37" alt="Support me on Ko-Fi" src="/img/kofi.webp" />
-    </a>
-  </span>
-  <span
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    ">
+  <div class="footer-left">
+    <span class="footer-item">
+      <Fragment set:html={bullet} />
+      <p class="footer-text">© Sirkorgo 2026</p>
+    </span>
+    <span class="footer-item">
+      <Fragment set:html={bullet} />
+      <p class="footer-text">
+        Made with whimsy and <a href="https://astro.build">Astro</a> by sirkorgo
+      </p>
+    </span>
     <a href="/is-this-site-ai">
       <img
         alt="Written by a human, not by AI."
-        width="130px"
-        height="42px"
+        width="130"
+        height="42"
         src="/img/buttons/notbyai.svg"
       />
     </a>
-    <p style="text-align: left;">
-      ©Sirkorgo 2026. Made with whimsy and <a href="https://astro.build">Astro</a> by sirkorgo.
-      <br />
-      <small>
-        <a href="/is-this-site-ai">AI Usage Statement •</a>
-        <a href="/sitemap">
-          Currently visiting {title} • View Sitemap
-        </a>
-      </small>
-    </p>
-  </span>
+  </div>
+  <div class="footer-right">
+    <p class="footer-text">Currently visiting {title}</p>
+    <a class="footer-text" href="/sitemap">View Sitemap</a>
+    <a class="footer-text" href="/is-this-site-ai">AI Usage Statement</a>
+  </div>
 </footer>

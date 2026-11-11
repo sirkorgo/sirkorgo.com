@@ -1,6 +1,6 @@
 ---
 import "../../css/global.scss";
-import Navbar from "../../components/navbar.astro";
+import Navbar from "../../components/topbar.astro";
 import Footer from "../../components/footer.astro";
 import Comments from "../../components/comments.astro";
 import Preload from "../../components/preload.astro";
@@ -61,7 +61,7 @@ const formattedDate = date
     </span>
     <div class="page">
       <section class="pageHeader">
-        <a href="/blog"><button class="generic-btn">← Go Back</button></a>
+        <a href="/blog"><button class="button">← Go Back</button></a>
         <p>
           <b>{formattedDate} • {title}</b>
         </p>

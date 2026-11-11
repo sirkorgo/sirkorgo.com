@@ -1,0 +1,38 @@
+.button,
+.button-muted {
+  display: flex;
+  width: fit-content;
+  height: 22px;
+  padding: 12px 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.button {
+  border: 1px solid var(--accent);
+  background: var(--btn-default);
+  color: white;
+}
+
+.button:hover {
+  background: var(--btn-hover);
+}
+
+.button-muted {
+  background: var(--btn-muted);
+  border: 1px solid var(--btn-muted-border);
+  color: var(--btn-muted-text);
+}
+
+.dropdown {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  //* TODO: add dropdown styling
+}
