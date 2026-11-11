@@ -1,0 +1,41 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -99999;
+}
+
+.base {
+  display: block;
+  background: var(--bg);
+}
+
+.rot {
+  position: absolute;
+  inset: -40%;
+  transform: rotate(-14deg);
+  overflow: hidden;
+}
+
+.mv {
+  position: absolute;
+  inset: -128px;
+  background: var(--tile);
+  opacity: var(--strength);
+  -webkit-mask: var(--tileurl) 0 0/128px 128px repeat;
+  mask: var(--tileurl) 0 0/128px 128px repeat;
+  animation: mv 20s linear infinite;
+}
+
+@keyframes mv {
+  to {
+    transform: translate(128px, 128px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv {
+    animation: none;
+  }
+}

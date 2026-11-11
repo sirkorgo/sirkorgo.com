@@ -24,7 +24,7 @@ export const title = "Guestbook";
           const { blocked } = await res.json();
           if (blocked) {
             wrapper.innerHTML = `
-              <span style="display: flex; gap: 10px; justify-content: center; align-items: center; padding: 20px 0;">
+              <div class="seciton" style="display: flex; gap: 10px; justify-content: center; align-items: center; padding: 20px 0;">
                 <img src="/img/banners/wget-dead.webp" width="200px" height="200px">
                 <span style="max-width: 50%;">
                   <h2>Service Unavailable</h2>
@@ -32,7 +32,7 @@ export const title = "Guestbook";
                   <small style="color: gray;"><i>Reference Code: ACCESS_RESTRICTED</i></small>
                   </p>
                 </span>
-              </span>
+              </div>
             `;
           } else {
             wrapper.innerHTML = `
@@ -47,7 +47,7 @@ export const title = "Guestbook";
         } catch (e) {
           console.log("socialServices error:", e);
           wrapper.innerHTML = `
-            <span style="display: flex; gap: 10px; justify-content: center; align-items: center; padding: 20px 0;">
+            <div class="seciton" style="display: flex; gap: 10px; justify-content: center; align-items: center; padding: 20px 0;">
               <img src="/img/emblems/srkgo-dizzy.webp" width="200px" height="200px">
               <span style="max-width: 50%;">
                 <h2>Something went wrong.</h2>
@@ -55,7 +55,7 @@ export const title = "Guestbook";
                 <small style="color: gray;"><i>Reference Code: MODERATION_FAIL</i></small>
                 </p>
               </span>
-            </span>
+            </div>
           `;
         }
       }

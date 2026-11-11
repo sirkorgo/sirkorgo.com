@@ -48,15 +48,28 @@ const footerTitle = title;
   </head>
 
   <body>
+    <div class="bg base"></div>
+    <div class="bg drift"><div class="rot"><div class="mv"></div></div></div>
+
     <main>
-      <section class="the-container-that-centers-the-main-content">
-        <section
-          class="nested-section-that-makes-the-content-not-stretch-the-entire-page-why-is-css-so-annoying">
-          <Navbar />
-          <slot />
-          <Footer title={footerTitle} />
-        </section>
-      </section>
+      <Navbar />
+      <slot />
+      <Footer title={footerTitle} />
     </main>
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const P = {
+          corgi:
+            "M6 6L22 13L42 13L58 6L56 32Q56 54 32 54Q8 54 8 32ZM22 30a3 3 0 1 0 6 0a3 3 0 1 0-6 0M36 30a3 3 0 1 0 6 0a3 3 0 1 0-6 0",
+          star: "M32 4L38.8 22.7L58.6 23.3L42.9 35.6L48.5 54.7L32 43.5L15.5 54.7L21.1 35.6L5.4 23.3L25.2 22.7Z",
+          cloud: "M16 50Q4 50 4 40Q4 30 15 30Q18 16 32 16Q46 16 49 28Q60 28 60 40Q60 50 50 50Z",
+        };
+        const slot = (k, x, y) =>
+          `<path transform='translate(${x + 10} ${y + 10}) scale(.7)' fill-rule='evenodd' d='${P[k]}'/>`;
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'>${slot("corgi", 0, 0)}${slot("star", 64, 0)}${slot("cloud", 0, 64)}${slot("corgi", 64, 64)}</svg>`;
+        root.style.setProperty("--tileurl", `url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+      })();
+    </script>
   </body><script is:inline src="https://cursor-party.sirkorgo.workers.dev/cursors.js"></script>
 </html>

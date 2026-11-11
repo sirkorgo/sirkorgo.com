@@ -1,7 +1,7 @@
 // header
 #topbar {
-  position: sticky;
-  top: 20px;
+  position: relative;
+
   z-index: 999;
 }
 
@@ -31,7 +31,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 1px;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 0px 0px;
   background: var(--nav-bar);
   height: 36px;
   padding: 0 10px;
