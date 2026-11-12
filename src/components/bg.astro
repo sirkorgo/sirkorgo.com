@@ -1,0 +1,48 @@
+---
+interface Props {
+  icons?: string[];
+  tile?: number;
+  tilt?: number;
+  duration?: number;
+  strength?: number;
+  animate?: boolean;
+}
+
+const DEFAULT_ICONS = [
+  "M6 6L22 13L42 13L58 6L56 32Q56 54 32 54Q8 54 8 32ZM22 30a3 3 0 1 0 6 0a3 3 0 1 0-6 0M36 30a3 3 0 1 0 6 0a3 3 0 1 0-6 0",
+  "M32 4L38.8 22.7L58.6 23.3L42.9 35.6L48.5 54.7L32 43.5L15.5 54.7L21.1 35.6L5.4 23.3L25.2 22.7Z",
+  "M16 50Q4 50 4 40Q4 30 15 30Q18 16 32 16Q46 16 49 28Q60 28 60 40Q60 50 50 50Z",
+];
+
+const {
+  icons = DEFAULT_ICONS,
+  tile = 128,
+  tilt = -14,
+  duration = 24,
+  strength = 0.16,
+  animate = true,
+} = Astro.props;
+
+const slot = tile / 2;
+const scale = (slot * 0.7) / 64;
+const offset = (slot - 64 * scale) / 2;
+const used = icons.slice(0, 4);
+const defs = used.map((d, i) => `<path id='i${i}' fill-rule='evenodd' d='${d}'/>`).join("");
+const uses = [0, 1, 2, 3]
+  .map((i) => {
+    const x = (i % 2) * slot + offset;
+    const y = Math.floor(i / 2) * slot + offset;
+    return `<use href='#i${i % used.length}' transform='translate(${x} ${y}) scale(${scale})'/>`;
+  })
+  .join("");
+const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${tile} ${tile}'><defs>${defs}</defs>${uses}</svg>`;
+const enc = svg.replace(/%/g, "%25").replace(/#/g, "%23").replace(/</g, "%3C").replace(/>/g, "%3E");
+const tileUrl = `url("data:image/svg+xml,${enc}")`;
+---
+
+<div
+  class:list={["drift", { still: !animate }]}
+  aria-hidden="true"
+  style={`--drift-tile:${tileUrl};--drift-size:${tile}px;--drift-tilt:${tilt}deg;--drift-duration:${duration}s;--drift-strength:${strength}`}>
+  <div class="rot"><div class="mv"></div></div>
+</div>å

@@ -30,16 +30,16 @@ function formatDate(date: Date) {
           </a><a href="/blog/archive"><button class="button">View Archives</button></a>
         </span>
       </span>
-      <section class="shelf">
+      <section class="section">
         {
           renderedPosts.map(({ post, Content }) => (
             <div class="blogpost">
-              <span class="post-header">
-                <a class="postTitle" href={`/blog/${post.id}`}>
-                  {post.data.title}
-                </a>
+              <div class="post-header">
+                <p class="postTitle">
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                </p>
                 <p class="postDate">{formatDate(post.data.date)}</p>
-              </span>
+              </div>
               <hr />
               <Content />
               <hr style="margin-bottom: 3px; margin-top: 30px;" />

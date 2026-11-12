@@ -1,39 +1,35 @@
-.bg {
+.drift {
   position: fixed;
   inset: 0;
-  overflow: hidden;
-  pointer-events: none;
   z-index: -99999;
+  pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--bg, #eaf2ff), var(--bg2, #a8ccff));
 }
-
-.base {
-  display: block;
-  background: var(--bg);
-}
-
 .rot {
   position: absolute;
   inset: -40%;
-  transform: rotate(-14deg);
+  transform: rotate(var(--drift-tilt));
   overflow: hidden;
 }
-
 .mv {
   position: absolute;
-  inset: -128px;
-  background: var(--tile);
-  opacity: var(--strength);
-  -webkit-mask: var(--tileurl) 0 0/128px 128px repeat;
-  mask: var(--tileurl) 0 0/128px 128px repeat;
-  animation: mv 20s linear infinite;
+  inset: calc(var(--drift-size) * -1);
+  background: var(--accent, #1f5bff);
+  opacity: var(--drift-strength);
+  -webkit-mask: var(--drift-tile) 0 0 / var(--drift-size) var(--drift-size) repeat;
+  mask: var(--drift-tile) 0 0 / var(--drift-size) var(--drift-size) repeat;
+  animation: drift var(--drift-duration) linear infinite;
+  will-change: transform;
 }
-
-@keyframes mv {
+.still .mv {
+  animation: none;
+}
+@keyframes drift {
   to {
-    transform: translate(128px, 128px);
+    transform: translate(var(--drift-size), var(--drift-size));
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .mv {
     animation: none;

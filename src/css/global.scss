@@ -5,7 +5,6 @@
 @use "components/buttons" as *;
 @use "components/bg" as *;
 @use "components/art" as *;
-@use "components/blog" as *;
 // fonts are now links in the head of layout files
 // when updating fonts, make sure to update each layout file
 
@@ -339,7 +338,7 @@ code {
   height: fit-content;
   padding: 10px 10px;
   border-radius: 14px;
-  background: var(--page-bg-welcome);
+  background: var(--paper-welcome);
   box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.3);
   min-height: 170px;
 }
