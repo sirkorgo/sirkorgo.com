@@ -61,55 +61,60 @@ const allPages = [...topLevelPages, ...manualPages].sort((a, b) =>
 
 <Layout title="Sitemap" colors="default">
   <div class="content">
-    <h1>Sitemap</h1>
-    <h2>Pages</h2>
-    <ul>
+    <h1 class="heading">Sitemap</h1>
+    <div class="section">
+      <h2>Pages</h2>
+      <ul>
+        {
+          allPages.map(({ url, label }) => (
+            <li>
+              <a href={url}>{label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Blog Posts</h2>
+      <ul>
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a> — {formatDate(post.data.date)}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Comics</h2>
       {
-        allPages.map(({ url, label }) => (
-          <li>
-            <a href={url}>{label}</a>
-          </li>
+        seriesGroups.map((group) => (
+          <div>
+            <h3>{group.name}</h3>
+            <ul>
+              {group.items.map((comic) => (
+                <li>
+                  <a href={`/comics/${comic.id}`}>{comic.data.title}</a> —{" "}
+                  {formatDate(comic.data.date)}
+                </li>
+              ))}
+            </ul>
+          </div>
         ))
       }
-    </ul>
-
-    <h2>Blog Posts</h2>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.id}`}>{post.data.title}</a> — {formatDate(post.data.date)}
-          </li>
-        ))
-      }
-    </ul>
-
-    <h2>Comics</h2>
-    {
-      seriesGroups.map((group) => (
-        <div>
-          <h3>{group.name}</h3>
-          <ul>
-            {group.items.map((comic) => (
-              <li>
-                <a href={`/comics/${comic.id}`}>{comic.data.title}</a> —{" "}
-                {formatDate(comic.data.date)}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-
-    <h2>Artworks</h2>
-    <ul>
-      {
-        art.map((piece) => (
-          <li>
-            <a href={`/art/${piece.id}`}>{piece.data.title}</a> — {formatDate(piece.data.date)}
-          </li>
-        ))
-      }
-    </ul>
+    </div>
+    <div class="section">
+      <h2>Artworks</h2>
+      <ul>
+        {
+          art.map((piece) => (
+            <li>
+              <a href={`/art/${piece.id}`}>{piece.data.title}</a> — {formatDate(piece.data.date)}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </Layout>

@@ -39,55 +39,55 @@ function getFirstImage(body?: string) {
 ---
 
 <Layout title="Blog Archive" colors="blog">
-  <div class="container pulse">
-    <div class="content">
-      <span class="heading">
-        <h1 style="margin: 0; min-width: fit-content;">Blog Archives</h1><a
-          href="/blog"
-          style="width: 100%; display: flex; justify-content: flex-end;">
-          <button class="button-muted">← Go Back</button>
-        </a>
-      </span>
-      <div class="shelf">
-        {
-          groups.map((month) => (
-            <div>
-              <h3 style="margin-bottom: 10px; margin-top: 0; padding-bottom: 5px; border-bottom: solid 1px grey;">
-                {month.label}
-              </h3>
-              <div class="archiveShelf">
-                {month.items.map((post) => {
-                  const excerpt = `${excerptTool(post.body).substring(0, 140)}...`;
-                  const thumb = getFirstImage(post.body);
-                  return (
-                    <div>
-                      <a class="" href={`/blog/${post.id}`}>
-                        <div style="display: flex; flex-direction: row-reverse; align-items: center; gap: 10px;">
-                          <span>
-                            <p style="margin-bottom: 0px;">{formatDate(post.data.date)}</p>
+  <div class="content">
+    <span class="heading">
+      <h1 style="margin: 0; min-width: fit-content;">Blog Archives</h1><a
+        href="/blog"
+        style="width: 100%; display: flex; justify-content: flex-end;">
+        <button class="button-muted">← Go Back</button>
+      </a>
+    </span>
+    <div class="section">
+      {
+        groups.map((month) => (
+          <div>
+            <h3 style="margin-bottom: 10px; margin-top: 0; padding-bottom: 5px; border-bottom: solid 1px var(--accent);">
+              {month.label}
+            </h3>
+            <div class="archiveShelf">
+              {month.items.map((post) => {
+                const excerpt = `${excerptTool(post.body).substring(0, 140)}...`;
+                const thumb = getFirstImage(post.body);
+                return (
+                  <div class="subsection">
+                    <a class="" href={`/blog/${post.id}`}>
+                      <div style="display: flex; flex-direction: row-reverse; align-items: center; gap: 10px;">
+                        <span>
+                          <p style="margin-bottom: 0px;">{formatDate(post.data.date)}</p>
+                          <p class="link" style="margin: 0;">
                             {post.data.title}
-                            <br style="margin-top: 5px;" />
-                            <p>{excerpt}</p>
-                          </span>
-                          {thumb && (
-                            <img
-                              src={thumb}
-                              alt={post.data.title}
-                              loading="lazy"
-                              decoding="async"
-                              style="width: 100px; height: 100px; object-fit: cover"
-                            />
-                          )}
-                        </div>
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
+                          </p>
+                          <br style="margin-top: 5px;" />
+                          <p>{excerpt}</p>
+                        </span>
+                        {thumb && (
+                          <img
+                            src={thumb}
+                            alt={post.data.title}
+                            loading="lazy"
+                            decoding="async"
+                            style="width: 100px; height: 100px; object-fit: cover"
+                          />
+                        )}
+                      </div>
+                    </a>
+                  </div>
+                );
+              })}
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </Layout>
