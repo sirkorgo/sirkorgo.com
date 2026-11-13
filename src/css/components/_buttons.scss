@@ -20,7 +20,8 @@
   background: var(--btn-hover);
 }
 
-.button-muted {
+.button-muted,
+.dropdown {
   background: var(--btn-muted);
   border: 1px solid var(--btn-muted-border);
   color: var(--btn-muted-text);

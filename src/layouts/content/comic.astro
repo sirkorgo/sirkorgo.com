@@ -1,10 +1,7 @@
 ---
-import "../../css/global.scss";
-import Navbar from "../../components/topbar.astro";
-import Footer from "../../components/footer.astro";
+import Layout from "../default.astro";
 import Comments from "../../components/comments.astro";
 import { getCollection } from "astro:content";
-import Preload from "../../components/preload.astro";
 
 interface Props {
   title?: string;
@@ -24,66 +21,29 @@ const pageTitle = `${title} (sirkorgo.com)`;
 const footerTitle = title;
 ---
 
-<!doctype html>
-<html id="html" class="default light comics" lang="en">
-  <head>
-    <Preload />
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-    <title>{pageTitle}</title>
-    <meta name="description" content={`Read ${title}, a comic on sirkorgo.com.`} />
-    <meta property="og:title" content={`${title} on sirkorgo.com`} />
-    <meta property="og:description" content={`Read ${title}, a comic on sirkorgo.com.`} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content="https://www.sirkorgo.com/img/emblems/thegang.webp" />
-    <style>
-      :global(nav) {
-        background: none !important;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
+<Layout>
+  <div id="post-content">
+    <main class="page">
+      <span class="comicHeader">
+        <a href="/comics"><button class="button-muted">← Go Back</button></a>
+        <p><b>{series} • Chapter {chapter}</b></p>
 
-  <body>
-    <Navbar hideBanner={true} />
-    <span style="display: flex; justify-content: center;">
-      <a href="https://ko-fi.com/sirkorgo">
-        <img width="185" height="37" alt="Support me on Ko-Fi" src="/img/kofi.webp" />
-      </a>
-    </span>
-    <div class="pageContainer">
-      <main class="page">
-        <span class="comicHeader">
-          <a href="/comics"><button class="button-muted">← Go Back</button></a>
-          <p><b>{series} • Chapter {chapter}</b></p>
-
-          <select onchange="location = this.value" class="dropdown">
-            {
-              seriesComics.map((comic) => (
-                <option value={`/comics/${comic.id}`} selected={comic.id === currentId}>
-                  Chapter {comic.data.chapter}
-                </option>
-              ))
-            }
-          </select>
-        </span>
-        <hr />
-        <br />
-        <span class="comicContent">
-          <slot />
-        </span>
-      </main>
-    </div>
+        <select onchange="location = this.value" class="dropdown">
+          {
+            seriesComics.map((comic) => (
+              <option value={`/comics/${comic.id}`} selected={comic.id === currentId}>
+                Chapter {comic.data.chapter}
+              </option>
+            ))
+          }
+        </select>
+      </span>
+      <hr />
+      <br />
+      <span class="comicContent">
+        <slot />
+      </span>
+    </main>
     <Comments />
-
-    <script is:inline src="https://cursor-party.sirkorgo.workers.dev/cursors.js"></script>
-    <Footer title={footerTitle} />
-  </body>
-</html>
+  </div>
+</Layout>

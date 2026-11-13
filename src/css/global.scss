@@ -5,6 +5,7 @@
 @use "components/buttons" as *;
 @use "components/bg" as *;
 @use "components/art" as *;
+@use "components/comments" as *;
 // fonts are now links in the head of layout files
 // when updating fonts, make sure to update each layout file
 
@@ -187,6 +188,7 @@ li,
   font-style: normal;
   font-weight: 500;
   letter-spacing: -0.5px;
+  margin: 1px 0 1px 0;
 }
 
 a,

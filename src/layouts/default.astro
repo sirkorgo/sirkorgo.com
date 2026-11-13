@@ -11,14 +11,12 @@ import icons from "../js/icons.json";
 interface Props {
   title?: string;
   desc?: string;
-  colors?: string;
   url?: string;
 }
 
 const {
   title = "sirkorgo.com",
   desc = "Home of Sirkorgo, a shapeshifting corgi, and his friends. Read comics about the world he lives in, Cloudspace, and read blog posts from the creator.",
-  colors = "default",
   url = Astro.url.pathname,
 } = Astro.props;
 
@@ -27,7 +25,7 @@ const footerTitle = title;
 ---
 
 <!doctype html>
-<html id="html" class={`${colors} light `} lang="en-US">
+<html id="html" class={`light `} lang="en-US">
   <head>
     <meta charset="utf-8" />
     <Preload />
