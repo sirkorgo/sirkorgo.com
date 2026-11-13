@@ -1,9 +1,6 @@
 ---
-import "../../css/global.scss";
-import Navbar from "../../components/topbar.astro";
-import Footer from "../../components/footer.astro";
+import Layout from "../default.astro";
 import Comments from "../../components/comments.astro";
-import Preload from "../../components/preload.astro";
 
 interface Props {
   title?: string;
@@ -25,41 +22,9 @@ const formattedDate = date
   : "";
 ---
 
-<!doctype html>
-<html id="html" class="default light blog" lang="en">
-  <head>
-    <Preload />
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-    <meta charset="utf-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-    <title>{pageTitle}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={excerpt} />
-    <meta property="og:title" content={`A post about ${title} on sirkorgo.com`} />
-    <meta property="og:description" content={excerpt} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content="https://www.sirkorgo.com/img/emblems/thegang.webp" />
-    <style>
-      :global(nav) {
-        background: none !important;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <Navbar hideBanner={true} />
-    <span style="display: flex; justify-content: center;">
-      <a href="https://ko-fi.com/sirkorgo">
-        <img width="185" height="37" alt="Support me on Ko-Fi" src="/img/kofi.webp" />
-      </a>
-    </span>
-    <div class="page">
+<Layout>
+  <div id="post-content">
+    <main class="page">
       <section class="pageHeader">
         <a href="/blog"><button class="button-muted">← Go Back</button></a>
         <p>
@@ -75,9 +40,7 @@ const formattedDate = date
         <br />
         <slot />
       </section>
-    </div>
+    </main>
     <Comments />
-    <script is:inline src="https://cursor-party.sirkorgo.workers.dev/cursors.js"></script>
-    <Footer title={footerTitle} />
-  </body>
-</html>
+  </div>
+</Layout>

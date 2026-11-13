@@ -1,11 +1,10 @@
 ---
 // src/layouts/content/art.astro
 import "../../css/global.scss";
-import Navbar from "../../components/topbar.astro";
-import Footer from "../../components/footer.astro";
 import Comments from "../../components/comments.astro";
-import Preload from "../../components/preload.astro";
+import Layout from "../default.astro";
 import { getCollection } from "astro:content";
+import { iban } from "astro:schema";
 
 interface Props {
   title?: string;
@@ -42,58 +41,9 @@ const prev = allArt[prevIndex];
 const next = allArt[nextIndex];
 ---
 
-<!doctype html>
-<html id="html" class="default light canvas" lang="en">
-  <head>
-    <Preload />
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-    <meta charset="utf-8" />
-    <title>{pageTitle}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={excerpt} />
-    <meta property="og:title" content={`An artwork by sirkorgo: ${title}`} />
-    <meta property="og:description" content={excerpt} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content={image} />
-
-    <style>
-      .artPage {
-        text-align: right;
-        display: flex;
-        width: 100%;
-        justify-content: center;
-      }
-
-      :global(nav) {
-        background: none !important;
-        margin-top: 10px;
-      }
-
-      @media (max-width: 1200px) {
-        .artPage {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <Navbar hideBanner={true} />
-    <span style="display: flex; justify-content: center;">
-      <a href="https://ko-fi.com/sirkorgo">
-        <img width="185" height="37" alt="Support me on Ko-Fi" src="/img/kofi.webp" />
-      </a>
-    </span>
-
-    <div class="page" style="min-height: fit-content;">
+<Layout>
+  <div id="post-content">
+    <main class="page" style="min-height: fit-content;">
       <section class="pageHeader">
         <a href="/portfolio"><button class="button-muted">← Go Back</button></a>
         <p><b>{title}</b></p>
@@ -101,14 +51,14 @@ const next = allArt[nextIndex];
           <a href={next ? `/art/${next.id}` : "#"} style="margin-left: 5px;">
             <button
               style="border-radius: 4px 0px 0px 4px !important; border-right: none;"
-              class="button">
+              class="button-muted">
               ←
             </button>
           </a>
           <a href={prev ? `/art/${prev.id}` : "#"}>
             <button
               style="border-radius: 0px 4px 4px 0px !important; border-left: none;"
-              class="button">
+              class="button-muted">
               →
             </button>
           </a>
@@ -128,12 +78,9 @@ const next = allArt[nextIndex];
           </span>
         </span>
       </section>
-    </div>
+    </main>
 
     <Comments />
-
-    <script is:inline src="https://cursor-party.sirkorgo.workers.dev/cursors.js"></script>
-
-    <Footer title={footerTitle} />
-  </body>
-</html>
+    <div></div>
+  </div></Layout
+>
