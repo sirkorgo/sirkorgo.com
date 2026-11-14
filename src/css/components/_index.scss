@@ -1,0 +1,168 @@
+.index-grid {
+  display: grid;
+  grid-template-columns: 4fr 1.5fr;
+  grid-template-areas:
+    "main"
+    "sidebar";
+  gap: 5px;
+}
+
+.index-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.index-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.status-body p {
+  font-size: 10px !important;
+  color: var(--heading) !important;
+}
+
+.theme-date {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.theme-date p {
+  color: var(--header-bg);
+}
+
+#now-date {
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* index.html mood bubble stuff */
+.mood-wrapper {
+  position: relative;
+  margin-top: 15px;
+  padding: 5px;
+}
+
+.mood-title {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-size: 11px;
+  color: white;
+  background: var(--accent);
+  border-radius: 3px;
+  padding: 4px 10px;
+  text-align: center;
+  width: fit-content;
+  white-space: nowrap;
+  position: absolute;
+  top: -10px;
+  z-index: 1;
+  box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mood {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--heading);
+  border: 2px solid var(--accent);
+  background: var(--panel);
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: fit-content;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#recent-blogposts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#recent-blog {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.recent-blogpost,
+.hero-blogpost {
+  min-height: 200px;
+}
+
+.welcome {
+  background-image: url("/img/banners/welcome.webp");
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  max-height: 100px;
+}
+
+p.welcome-text {
+  font-size: 13px !important;
+}
+
+.welcome-text {
+  color: white;
+  font-family: "Manrope";
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: column; /* stacked by default (mobile) */
+  align-items: center;
+  gap: 10px;
+  /* no fixed height here anymore */
+}
+
+.marquee-buttons {
+  max-height: 260px; /* the height cap is what makes it scroll */
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 88px);
+  grid-auto-rows: 31px;
+  align-content: start;
+  gap: 2px;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+#latest-art {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 5px;
+}
+
+#hero-art {
+  width: 50%;
+}
+
+#latest-comics {
+  display: grid;
+  grid-template-rows: 1fr;
+  width: 50%;
+  gap: 5px;
+}
+
+#latest-cloudspace,
+#latest-meantime {
+  height: 100%;
+}

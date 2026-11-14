@@ -6,6 +6,7 @@
 @use "components/bg" as *;
 @use "components/art" as *;
 @use "components/comments" as *;
+@use "components/index" as *;
 // fonts are now links in the head of layout files
 // when updating fonts, make sure to update each layout file
 
@@ -44,32 +45,24 @@ main {
   width: 80%;
 }
 
-// .the-container-that-centers-the-main-content {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-//   width: 100%;
-// }
-
-// .nested-section-that-makes-the-content-not-stretch-the-entire-page-why-is-css-so-annoying {
-//   max-width: 900px;
-// }
-
 .content {
   background: var(--container-bg);
-  padding: 15px;
   border-radius: 0 0 15px 15px;
   z-index: 10;
   position: relative;
   display: flex;
   gap: 3px;
   flex-direction: column;
+  margin-top: 5px;
+}
+
+.section,
+.sidesection {
+  border: 2px solid var(--accent);
+  background: var(--panel);
 }
 
 .section {
-  border: 2px solid var(--accent);
-  background: var(--panel);
   padding: 15px;
 }
 
@@ -78,6 +71,13 @@ main {
   background: var(--bg);
   padding: 15px;
   border-radius: 3px;
+}
+
+.section-title {
+  width: 100%;
+  background: var(--accent);
+  display: flex;
+  padding: 3px 0px 3px 5px;
 }
 
 .caption {
@@ -241,104 +241,6 @@ code {
   border-bottom: solid 1px var(--accent);
 }
 
-.mobileSupportBtn {
-  display: none;
-}
-
-/* index.html mood bubble stuff */
-.mood-wrapper {
-  position: relative;
-}
-
-.mood-title {
-  font-family: "Cabin";
-  font-weight: 400;
-  font-size: 11px;
-  color: white;
-  background: linear-gradient(0deg, rgb(126, 210, 255) 0%, rgb(31, 147, 255) 88%);
-  border-radius: 150px;
-  padding: 4px 10px;
-  text-align: center;
-  width: fit-content;
-  white-space: nowrap;
-  position: absolute;
-  top: -14px;
-  left: 0; // was left: 50% + transform
-  z-index: 1;
-  box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.3);
-}
-
-.mood-tiny {
-  background: linear-gradient(180deg, #ddf0ff 0%, #b4deff 100%);
-  border: 1.5px solid #96d2ff;
-  border-radius: 150px;
-  position: relative;
-  display: flex;
-  gap: 10px;
-  padding: 3px;
-  justify-content: center;
-}
-
-.mood {
-  font-family: "Cabin";
-  font-weight: 400;
-  font-size: 15px;
-  color: white;
-  background: linear-gradient(0deg, rgb(46, 182, 255) 0%, rgb(0, 106, 255) 88%);
-  border-radius: 150px;
-  padding: 10px;
-  text-align: center;
-  width: fit-content;
-  position: relative;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-/* media queries */
-@media (max-width: 1000px) {
-  .archiveShelf {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .mobileSupportBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 70px;
-  }
-}
-
-@media (max-width: 800px) {
-  .field {
-    display: none;
-  }
-  .bg-layer {
-    -webkit-mask-image: radial-gradient(circle 1px at 50vw 50vh, var(--bg) 10%, transparent 300px);
-    mask-image: radial-gradient(circle 1px at 50vw 50vh, var(--bg) 10%, transparent 300px);
-  }
-}
-
-@media (max-width: 670px) {
-  .welcome {
-    display: none;
-  }
-
-  .subwelcome {
-    flex-direction: column;
-  }
-
-  main {
-    margin: 0px !important;
-  }
-
-  .bg-layer {
-    -webkit-mask-image: radial-gradient(circle 1px at 50vw 50vh, var(--bg) 10%, transparent 200px);
-    mask-image: radial-gradient(circle 1px at 50vw 50vh, var(--bg) 10%, transparent 200px);
-  }
-}
-
 @media (max-width: 300px) {
   #canvas {
     display: none;
@@ -353,36 +255,6 @@ code {
   padding: 0 !important;
 }
 
-.welcome {
-  height: fit-content;
-  padding: 10px 10px;
-  border-radius: 14px;
-  background: var(--paper-welcome);
-  box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.3);
-  min-height: 170px;
-}
-
-.index-grid {
-  display: grid;
-  grid-template-columns: 3fr 1fr; /* roughly matches your old 90/25 split, normalized */
-  grid-template-areas:
-    "main button"
-    "main marquee";
-  gap: 15px;
-}
-
-.index-main {
-  grid-area: main;
-}
-
-.index-button {
-  grid-area: button;
-}
-
-.index-marquee {
-  grid-area: marquee;
-}
-
 .field {
   position: fixed;
   bottom: 0;
@@ -394,13 +266,4 @@ code {
   transform: translateY(clamp(0px, 8vw, 150px));
 
   z-index: -1;
-}
-@media (max-width: 800px) {
-  .index-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "main"
-      "button"
-      "marquee";
-  }
 }

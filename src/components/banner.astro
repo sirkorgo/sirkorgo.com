@@ -7,7 +7,7 @@
       align-items: center;
       gap: 5px;
     ">
-    <img width="75px" height="62px" src="/img/emblems/srkgo-think.webp" alt="Sirkorgo thinking" />
+    <!-- <img width="75px" height="62px" src="/img/emblems/srkgo-think.webp" alt="Sirkorgo thinking" /> -->
     <div class="mood-wrapper">
       <div class="mood-title"><b>what&#x27;s sirkorgo up to?</b></div>
       <div class="mood">
@@ -16,7 +16,6 @@
     </div>
   </span>
 </div>
-<br />
 <span
   style="
     display: flex;
@@ -30,13 +29,30 @@
     alt="sirkorgo.com site banner: sirkorgo, widget, and mono under an autumn tree"
     loading="lazy"
     decoding="async"
-    width="400px"
-    height="400px"
+    width="250px"
+    height="250px"
     style="max-width: 100%; height: auto; margin-top: 10px"
   />
-  <p style="display: flex; align-items: center; justify-content: center; text-align: center">
-    <small><i>Theme: Autumn's Here!</i></small>
-  </p>
 </span>
-<br />
-<span style="padding-bottom: 10px"></span>
+<span class="theme-date">
+  <h2 id="now-date" style="margin: 0;">Monoday, Sirkorgurary 1st</h2>
+  <p style="margin: 0;" class="footer-text">Autumn's Here!</p>
+</span>
+<script is:inline async>
+  const now = new Date();
+
+  // Format the weekday, month, and day (e.g., "Friday, November 13")
+  const weekday = now.toLocaleDateString("en-US", { weekday: "long" });
+  const month = now.toLocaleDateString("en-US", { month: "long" });
+  const day = now.getDate();
+
+  // Add the ordinal suffix ("st", "nd", "rd", or "th")
+  function getOrdinal(n) {
+    const suffixes = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+  }
+
+  // Insert the formatted date into the h2 tag
+  document.getElementById("now-date").innerHTML = `${weekday},<br> ${month} ${getOrdinal(day)}`;
+</script>
