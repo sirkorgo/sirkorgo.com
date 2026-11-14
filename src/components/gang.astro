@@ -1,0 +1,50 @@
+---
+const gang = [
+  {
+    name: "Sirkorgo",
+    img: "/img/emblems/srkgo_meet.webp",
+    alt: "Sirkorgo waving",
+    tagline: "Energetic shapeshifter who builds little gadgets.",
+  },
+  {
+    name: "Widget",
+    img: "/img/emblems/wget_meet.webp",
+    alt: "Widget hovering",
+    tagline: "A UFO-shaped quantum lifeform with a built-in motor.",
+  },
+  {
+    name: "Mono",
+    img: "/img/emblems/mono_meet.webp",
+    alt: "Mono smiling",
+    tagline: "Sirkorgo's little brother. No arms or legs, so he digs.",
+  },
+];
+---
+
+<section class="gang" aria-labelledby="gang-title" style={`--count:${gang.length}`}>
+  <div class="gang-track">
+    <ul class="gang-list">
+      {
+        gang.map((c) => (
+          <li class="gang-card">
+            <img src={c.img} alt={c.alt} width="256" height="256" decoding="async" />
+            <h3>{c.name}</h3>
+            <p>{c.tagline}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <!-- duplicate set so the loop is seamless; hidden from screen readers and keyboard -->
+    <ul class="gang-list" aria-hidden="true" inert>
+      {
+        gang.map((c) => (
+          <li class="gang-card">
+            <img src={c.img} alt="" width="256" height="256" decoding="async" />
+            <h3>{c.name}</h3>
+            <p>{c.tagline}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

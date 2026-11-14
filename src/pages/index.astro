@@ -2,6 +2,7 @@
 import Layout from "../layouts/default.astro";
 import Marquee from "../components/marquee.astro";
 import Banner from "../components/banner.astro";
+import Gang from "../components/gang.astro";
 export const title = "Index";
 ---
 
@@ -14,7 +15,8 @@ export const title = "Index";
           A whimsyful site for my OCs: Sirkorgo, Widget, Mono, and their friends.<br />See my art,
           comics, and read about my tech ramblings on the blog. <br /><a
             class="welcome-text"
-            style="color: white;">
+            style="color: white;"
+            href="/about">
             Learn more
           </a>
         </p>
@@ -51,6 +53,7 @@ export const title = "Index";
         </section>
         <section class="section">
           <h1 style="margin: 0;">Meet the cast</h1>
+          <Gang />
         </section>
       </div>
       <div class="index-sidebar">
@@ -62,6 +65,34 @@ export const title = "Index";
         </section>
         <section class="sidesection">
           <span class="section-title">
+            <h3 class="caption" style="color: white; margin: 0 !important;">add my button!</h3>
+          </span>
+          <span
+            style="
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              margin-top: 5px;
+            ">
+            <a href="https://www.sirkorgo.com" target="_blank">
+              <img
+                src="/img/bumper.gif"
+                alt="sirkorgo.com Site Bumper"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <br />
+            <code style="font-size: 9.5px">
+              &lt;a href="https://www.sirkorgo.com" target="_blank"&gt;&lt;img
+              src="https://www.sirkorgo.com/img/bumper.gif"&gt;&lt;/a&gt;
+            </code>
+            <p style="margin-bottom: 0"><small>hotlinking recommended!</small></p>
+          </span>
+        </section>
+        <section class="sidesection">
+          <span class="section-title">
             <h3 class="caption" style="color: white; margin: 0 !important;">neighbors</h3>
           </span>
           <div style="padding: 10px;">
@@ -70,5 +101,8 @@ export const title = "Index";
         </section>
       </div>
     </div>
+    <section class="section">
+      <h1 style="margin: 0;">Changelog</h1>
+    </section>
   </div>
 </Layout>
