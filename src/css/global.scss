@@ -121,7 +121,8 @@ a {
 }
 
 /* page enter animation */
-body > *:not(.navContainer) {
+.content,
+#post-content {
   animation: zoomIn 0.18s ease-out;
 }
 
