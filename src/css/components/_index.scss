@@ -103,24 +103,35 @@
 }
 
 .welcome {
-  background-image: url("/img/banners/welcome.webp");
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   overflow: hidden;
-  max-height: 100px;
+  padding: 10px 230px 10px 10px;
+  background-image: url("/img/banners/welcome.webp");
   border: 2px solid var(--accent);
 }
 
-p.welcome-text {
-  font-size: 13px !important;
+.welcome-art {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 200px;
+  height: auto;
+  transform: translateY(-50%); /* pulls it up by half its own height, so it's centered */
 }
 
 .welcome-text {
   color: white;
   font-family: "Manrope";
+  margin: 0;
+}
+p.welcome-text {
+  font-size: 13px;
+}
+.welcome a {
+  color: white;
+  text-decoration: underline wavy var(--accent); // the squiggle under names in your sketch
+  text-underline-offset: 2px;
+  text-shadow: 0px 0px 2px var(--accent);
 }
 
 .marquee-container {
