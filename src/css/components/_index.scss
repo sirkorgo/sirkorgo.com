@@ -161,6 +161,34 @@ p.welcome-text {
   scrollbar-color: var(--accent) transparent;
 }
 
+#hero-blog {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recent-blogpost {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recent-blogpost h2 {
+  line-height: 20px;
+  font-size: 20px;
+}
+
+.post-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  text-align: right;
+}
+
+.recent-blogpost:hover {
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
 #latest-art {
   display: flex;
   justify-content: center;

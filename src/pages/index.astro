@@ -4,6 +4,28 @@ import Marquee from "../components/marquee.astro";
 import Banner from "../components/banner.astro";
 import Gang from "../components/gang.astro";
 export const title = "Index";
+
+import { getCollection } from "astro:content";
+const blog = await getCollection("posts");
+
+function Excerpt(markdown: string, maxLength = 200) {
+  if (!markdown) return "";
+
+  const plainText = markdown
+    .replace(/<[^>]*>/g, "")
+    .replace(/!\[.*?\]\(.*?\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[#*`>_~-]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (plainText.length <= maxLength) return plainText;
+  return plainText.slice(0, maxLength).trim() + "...";
+}
+
+const sortedPosts = [...blog].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const hero = sortedPosts[0];
+const recentBlogs = sortedPosts.slice(2, 4);
 ---
 
 <Layout title={title}>
@@ -24,10 +46,34 @@ export const title = "Index";
         <section class="section">
           <div id="recent-blogposts">
             <h1 style="margin: 0;">Blog Posts</h1>
-            <div id="hero-blog" class="subsection hero-blogpost"></div>
+            {
+              hero && (
+                <div id="hero-blog" class="subsection recent-blogpost">
+                  <span>
+                    <h2>{hero.data.title}</h2>
+                    <p>{Excerpt(hero.body)}</p>
+                  </span>
+                  <span class="post-date">
+                    <p>{hero.data.date.toLocaleDateString()}</p>
+                  </span>
+                </div>
+              )
+            }
             <div id="recent-blog">
-              <div class="subsection recent-blogpost"></div>
-              <div class="subsection recent-blogpost"></div>
+              {
+                recentBlogs.map((post) => (
+                  <div class="subsection recent-blogpost">
+                    {" "}
+                    <span>
+                      <h2>{post.data.title}</h2>
+                      <p>{Excerpt(post.body)}</p>
+                    </span>
+                    <span class="post-date">
+                      <p>{post.data.date.toLocaleDateString()}</p>
+                    </span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </section>
