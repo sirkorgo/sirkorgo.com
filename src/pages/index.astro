@@ -7,6 +7,8 @@ export const title = "Index";
 
 import { getCollection } from "astro:content";
 const blog = await getCollection("posts");
+const art = await getCollection("art");
+const comics = await getCollection("comics");
 
 function Excerpt(markdown: string, maxLength = 200) {
   if (!markdown) return "";
@@ -26,6 +28,25 @@ function Excerpt(markdown: string, maxLength = 200) {
 const sortedPosts = [...blog].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const hero = sortedPosts[0];
 const recentBlogs = sortedPosts.slice(2, 4);
+
+const sortedArt = [...art].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestArt = sortedArt[0];
+
+const allComics = await getCollection("comics");
+
+function getLatestComicChapter(seriesName: string): CollectionEntry<"comics"> | undefined {
+  return allComics
+    .filter((entry) => entry.data.series === seriesName)
+    .sort((a, b) => {
+      if (b.data.chapter !== a.data.chapter) {
+        return b.data.chapter - a.data.chapter;
+      }
+      return b.data.date.valueOf() - a.data.date.valueOf();
+    })[0];
+}
+
+const latestMeantime = getLatestComicChapter("Sirkorgo! In the Meantime...");
+const latestCloudspace = getLatestComicChapter("Cloudspace");
 ---
 
 <Layout title={title}>
@@ -48,15 +69,17 @@ const recentBlogs = sortedPosts.slice(2, 4);
             <h1 style="margin: 0;">Blog Posts</h1>
             {
               hero && (
-                <div id="hero-blog" class="subsection recent-blogpost">
-                  <span>
-                    <h2>{hero.data.title}</h2>
-                    <p>{Excerpt(hero.body)}</p>
-                  </span>
-                  <span class="post-date">
-                    <p>{hero.data.date.toLocaleDateString()}</p>
-                  </span>
-                </div>
+                <a style="all: unset;" href={`/blog/${hero.id}`}>
+                  <div id="hero-blog" class="subsection recent-blogpost">
+                    <span>
+                      <h2>{hero.data.title}</h2>
+                      <p>{Excerpt(hero.body)}</p>
+                    </span>
+                    <span class="post-date">
+                      <p>{hero.data.date.toLocaleDateString()}</p>
+                    </span>
+                  </div>
+                </a>
               )
             }
             <div id="recent-blog">
@@ -80,16 +103,70 @@ const recentBlogs = sortedPosts.slice(2, 4);
         <section class="section">
           <h1 style="margin: 0;">Artwork & Comics</h1>
           <div id="latest-art">
-            <div id="hero-art" class="subsection"></div>
+            <div id="hero-art" class="subsection">
+              {
+                latestArt && (
+                  <>
+                    <a href={`/art/${latestArt.id}`}>
+                      <img src={latestArt.data.image} alt={latestArt.data.title} />
+                      <div class="art-meta">
+                        <p class="art-date">{latestArt.data.date.toLocaleDateString()}</p>
+                        <h2>{latestArt.data.title}</h2>
+                      </div>
+                    </a>
+                  </>
+                )
+              }
+            </div>
             <div id="latest-comics">
-              <div class="subsection" id="latest-cloudspace">
-                <h3 class="caption" style="margin: 0;">Cloudspace</h3>
-                <p>Chapter 4 out now</p>
-              </div>
-              <div class="subsection" id="latest-meantime">
-                <h3 class="caption" style="margin: 0;">Sirkorgo! In the Meantime</h3>
-                <p>Chapter 6 out now</p>
-              </div>
+              {
+                latestCloudspace && (
+                  <a
+                    href={`/comics/${latestCloudspace.id}`}
+                    class="subsection"
+                    id="latest-cloudspace">
+                    <span class="comic-meta">
+                      <p>Chapter {latestCloudspace.data.chapter}</p>
+                      <h3 class="caption" style="margin: 0;">
+                        Cloudspace
+                      </h3>
+                    </span>
+                    <img
+                      src="/img/banners/cloudspace-thumb.gif"
+                      loading="lazy"
+                      decoding="async"
+                      alt="Cloudspace Thumbnail"
+                      width="128"
+                      height="128"
+                      class="comic-thumb"
+                    />
+                  </a>
+                )
+              }
+              {
+                latestMeantime && (
+                  <a
+                    href={`/comics/${latestMeantime.id}`}
+                    class="subsection"
+                    id="latest-cloudspace">
+                    <span class="comic-meta">
+                      <p>Chapter {latestMeantime.data.chapter}</p>
+                      <h3 class="caption" style="margin: 0;">
+                        Sirkorgo! In the Meantime...
+                      </h3>
+                    </span>
+                    <img
+                      src="/img/banners/meantime-thumb.gif"
+                      loading="lazy"
+                      decoding="async"
+                      alt="Cloudspace Thumbnail"
+                      width="128"
+                      height="128"
+                      class="comic-thumb"
+                    />
+                  </a>
+                )
+              }
             </div>
           </div>
         </section>
@@ -143,8 +220,5 @@ const recentBlogs = sortedPosts.slice(2, 4);
         </section>
       </div>
     </div>
-    <section class="section">
-      <h1 style="margin: 0;">Changelog</h1>
-    </section>
   </div>
 </Layout>
