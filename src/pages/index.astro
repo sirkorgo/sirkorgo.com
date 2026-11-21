@@ -123,7 +123,7 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
                 latestCloudspace && (
                   <a
                     href={`/comics/${latestCloudspace.id}`}
-                    class="subsection"
+                    class="subsection comic-card"
                     id="latest-cloudspace">
                     <span class="comic-meta">
                       <p>Chapter {latestCloudspace.data.chapter}</p>
@@ -147,8 +147,8 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
                 latestMeantime && (
                   <a
                     href={`/comics/${latestMeantime.id}`}
-                    class="subsection"
-                    id="latest-cloudspace">
+                    class="subsection comic-card"
+                    id="latest-meantime">
                     <span class="comic-meta">
                       <p>Chapter {latestMeantime.data.chapter}</p>
                       <h3 class="caption" style="margin: 0;">
@@ -159,7 +159,7 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
                       src="/img/banners/meantime-thumb.gif"
                       loading="lazy"
                       decoding="async"
-                      alt="Cloudspace Thumbnail"
+                      alt="Sirkorgo! In the Meantime... Thumbnail"
                       width="128"
                       height="128"
                       class="comic-thumb"
@@ -176,7 +176,7 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
         </section>
       </div>
       <div class="index-sidebar">
-        <section class="sidesection">
+        <section class="sidesection banner-sect">
           <span class="section-title">
             <h3 class="caption" style="color: white; margin: 0 !important;">now</h3>
           </span>
@@ -186,14 +186,7 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
           <span class="section-title">
             <h3 class="caption" style="color: white; margin: 0 !important;">add my button!</h3>
           </span>
-          <span
-            style="
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              margin-top: 5px;
-            ">
+          <div class="button-box">
             <a href="https://www.sirkorgo.com" target="_blank">
               <img
                 src="/img/bumper.gif"
@@ -202,21 +195,17 @@ const latestCloudspace = getLatestComicChapter("Cloudspace");
                 decoding="async"
               />
             </a>
-            <br />
-            <code style="font-size: 9.5px">
-              &lt;a href="https://www.sirkorgo.com" target="_blank"&gt;&lt;img
-              src="https://www.sirkorgo.com/img/bumper.gif"&gt;&lt;/a&gt;
-            </code>
-            <p style="margin-bottom: 0"><small>hotlinking recommended!</small></p>
-          </span>
+            <pre
+              class="code-block"
+              tabindex="0"><code> &lt;a href="https://www.sirkorgo.com" target="_blank"&gt;&lt;img src="https://www.sirkorgo.com/img/bumper.gif"&gt;&lt;/a&gt;</code></pre>
+            <p><small>hotlinking recommended!</small></p>
+          </div>
         </section>
         <section class="sidesection">
           <span class="section-title">
             <h3 class="caption" style="color: white; margin: 0 !important;">neighbors</h3>
           </span>
-          <div style="padding: 10px;">
-            <div><Marquee /></div>
-          </div>
+          <Marquee />
         </section>
       </div>
     </div>
