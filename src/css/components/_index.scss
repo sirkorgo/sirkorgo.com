@@ -149,11 +149,11 @@ p.welcome-text {
   gap: 10px;
   display: flex;
   margin: 10px;
-  overflow-y: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
 }
 
