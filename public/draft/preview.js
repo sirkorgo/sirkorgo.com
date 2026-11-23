@@ -1,10 +1,11 @@
 CMS.registerPreviewStyle("/css/global.css");
 CMS.registerPreviewStyle("/css/post.css");
-
 CMS.registerPreviewStyle(
   "https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Cabin:ital,wght@0,400..700;1,400..700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap",
 );
 CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+const { useEffect } = CMS.React;
 
 const ArtPreview = createClass({
   componentDidMount: function () {
@@ -43,7 +44,7 @@ const ArtPreview = createClass({
             "button",
             {
               className: "button",
-              style: { borderRadius: "4px 0px 0px 4px !important", borderRight: "none" },
+              style: { borderRadius: "4px 0px 0px 4px", borderRight: "none" },
             },
             "←",
           ),
@@ -51,7 +52,7 @@ const ArtPreview = createClass({
             "button",
             {
               className: "button",
-              style: { borderRadius: "0px 4px 4px 0px !important", borderLeft: "none" },
+              style: { borderRadius: "0px 4px 4px 0px", borderLeft: "none" },
             },
             "→",
           ),
@@ -64,7 +65,9 @@ const ArtPreview = createClass({
         h(
           "div",
           { id: "art-content" },
-          imageAsset ? h("img", { src: imageAsset.toString(), alt: title }) : null,
+          imageAsset
+            ? h("img", { src: imageAsset.url ?? imageAsset.toString(), alt: title })
+            : null,
         ),
         h(
           "span",
